@@ -1,0 +1,37 @@
+header{
+    font-size: 100px;
+    text-align: center;
+    background-color: red;
+}
+
+body{
+    background-color: orange;
+}
+
+#gameArea{
+    display:block;
+    background-color: #fff;
+    overflow:auto;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    width:900px;
+}
+
+.gameBox{
+    width:448px; /*((gamearea width)/2)-(border-width)*2 */
+    height:500px;
+    margin-left:auto;
+    margin-right:auto;
+    float:left;
+    background-color:black;
+    border-style: dashed;
+    border-color: white;
+    border-width: 1px;
+}
+
+#hangman{
+    width: 100%;
+    height: auto;
+    margin: 0px 0px 0px 0px;
+}
