@@ -1,11 +1,16 @@
 header{
-    font-size: 100px;
+    font-size: 75px;
+    font-family: circuitFont;
     text-align: center;
-    background-color: red;
+    height: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    background-image: url(../images/darkCircuit.jpg);
 }
 
 body{
-    background-color: orange;
+    background-image: url(../images/backgroundCircuit.png);
 }
 
 #gameArea{
@@ -30,13 +35,20 @@ body{
     border-width: 1px;
 }
 
-#hangman{
-    width: 100%;
+#robot{
+    width: 90%;
     height: auto;
-    margin: 0px 0px 0px 0px;
+    margin: 0px;
 }
 
-#rightGameBox{
+#leftGameBox{
+    align-content: center;
+    background-image: url(../images/robot.png);
+    background-size: cover;
+}
+
+.water{
+    height: 50px;
 }
 
 p{
@@ -45,3 +57,8 @@ p{
     font-size: 24px;
     margin:20px;
 }
+
+@font-face {
+    font-family: circuitFont;
+    src: url(../fonts/101!\ Circuit\ Board.ttf);
+  }

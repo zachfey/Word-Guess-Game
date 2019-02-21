@@ -33,7 +33,13 @@ game = { //define the game object
         writeMessage("currentWord", game.blanks.join(" "));
         writeMessage("remainingGuesses", game.maxGuesses);
         writeMessage("wins", game.wins);
+        writeMessage("prompt","Guess your letter!")
+        writeMessage("guessedLetters", game.guessedLetters);
         game.gameOver = false;
+        for(i = 1; i < 11; i++){
+            document.getElementById("water" + i).style.backgroundColor = null
+            document.getElementById("water" + i).style.backgroundImage = null;
+        }
     },
 
     checkLetter: function(char){ // this method compares the entered letter to the word and letters already guessed
@@ -47,6 +53,10 @@ game = { //define the game object
     
                 if(game.currentWord.indexOf(char) === - 1){ //if char is not found in current word
                     game.guessedLetters.push(char); //add the guessed letter to the array of guessed letters
+                    document.getElementById("water" + (game.maxGuesses - game.numberGuesses)).style.backgroundImage = "url('assets/images/waterTop.png')";
+                    if(game.numberGuesses !== 0){
+                        document.getElementById("water" + (game.maxGuesses - game.numberGuesses + 1)).style.background = "#00ccff";
+                    } 
                     game.numberGuesses++; //increase the number of guesses
                     writeMessage("remainingGuesses", game.maxGuesses - game.numberGuesses); // output the dnumber of remaining guesses
                     writeMessage("guessedLetters", game.guessedLetters.join(", ")) //display all of the gussed letters
@@ -65,6 +75,7 @@ game = { //define the game object
     checkLose: function(){ //method to see if the user has lost the game
         if(game.numberGuesses >= game.maxGuesses){
             writeMessage("prompt", "You Lose! Press 'Enter' to try again!");
+            writeMessage("currentWord", game.currentWord);
             game.gameOver = true;
         }
     },
