@@ -35,11 +35,6 @@ body{
     border-width: 1px;
 }
 
-#robot{
-    width: 90%;
-    height: auto;
-    margin: 0px;
-}
 
 #leftGameBox{
     align-content: center;
@@ -56,10 +51,90 @@ p{
     text-align:center;
     font-size: 24px;
     margin:20px;
-    font-family: 'arial';
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 @font-face {
     font-family: circuitFont;
     src: url(../fonts/101!\ Circuit\ Board.ttf);
-  }
+}
+
+@media screen and (max-width:990px){
+    header{
+        font-size: 55px;
+        padding-bottom: 0px;
+    }
+
+    #gameArea{
+        width:700px;
+    }
+    
+    .gameBox{
+        width:348px; /*((gamearea width)/2)-(border-width)*2 */
+        height:410px;
+    }
+
+    #leftGameBox{
+        background-repeat: no-repeat;
+        background-size: 100%, 100%;
+    }
+
+    .water{
+        height: 41px;
+    }
+
+    p{
+        font-size: 20px;
+        margin:15px;
+    }
+
+}
+
+@media screen and (max-width:768px){
+    header{
+        font-size: 45px;
+    }
+
+    #gameArea{
+        width:600px;
+    }
+    
+    .gameBox{
+        width:298px; /*((gamearea width)/2)-(border-width)*2 */
+        height:350px;
+    }
+
+    .water{
+        height: 35px;
+    }
+
+    p{
+        font-size: 19px;
+        margin:14px;
+    }
+
+}
+
+@media screen and (max-width:640px){
+    header{
+        font-size: 35px;
+    }
+
+    #gameArea{
+        width:390px;
+    }
+    
+    .gameBox{
+        width:193px; /*((gamearea width)/2)-(border-width)*2 */
+        height:220px;
+    }
+
+    .water{
+        height: 22px;
+    }
+
+    p{
+        font-size: 12px;
+        margin:10px;
+    }
+}

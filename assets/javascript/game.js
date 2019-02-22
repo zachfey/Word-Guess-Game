@@ -52,24 +52,32 @@ game = { //define the game object
                 console.log("letter pressed");
     
                 if(game.currentWord.indexOf(char) === - 1){ //if char is not found in current word
-                    game.guessedLetters.push(char); //add the guessed letter to the array of guessed letters
-                    document.getElementById("water" + (game.maxGuesses - game.numberGuesses)).style.backgroundImage = "url('assets/images/waterTop.png')";
-                    if(game.numberGuesses !== 0){
-                        document.getElementById("water" + (game.maxGuesses - game.numberGuesses + 1)).style.background = "#00ccff";
-                    } 
-                    game.numberGuesses++; //increase the number of guesses
-                    writeMessage("remainingGuesses", game.maxGuesses - game.numberGuesses); // output the dnumber of remaining guesses
-                    writeMessage("guessedLetters", game.guessedLetters.join(", ")) //display all of the gussed letters
+                    game.wrongLetter(char);
                 } else{ //if char is found in current word
-                    for(i = 0; i < game.currentWord.length; i++){ //loop through the word to find at which index(indices) the letter occurs
-                        if(game.currentWord[i] === char){ 
-                            game.blanks[i] = char; //replace the underscore with the correct letter
-                        }
-                    }
-                    writeMessage("currentWord", game.blanks.join(" ")); //outputs the guessed word with blanks
+                    game.correctLetter(char);
                 }
             }
         }
+    },
+
+    wrongLetter: function(char){
+        game.guessedLetters.push(char); //add the guessed letter to the array of guessed letters
+        document.getElementById("water" + (game.maxGuesses - game.numberGuesses)).style.backgroundImage = "url('assets/images/waterTop.png')"; //TODO Javascript media query
+        if(game.numberGuesses !== 0){
+            document.getElementById("water" + (game.maxGuesses - game.numberGuesses + 1)).style.background = "#00ccff";
+        } 
+        game.numberGuesses++; //increase the number of guesses
+        writeMessage("remainingGuesses", game.maxGuesses - game.numberGuesses); // output the dnumber of remaining guesses
+        writeMessage("guessedLetters", game.guessedLetters.join(", ")) //display all of the gussed letters
+    },
+
+    correctLetter: function(char){
+        for(i = 0; i < game.currentWord.length; i++){ //loop through the word to find at which index(indices) the letter occurs
+            if(game.currentWord[i] === char){ 
+                game.blanks[i] = char; //replace the underscore with the correct letter
+            }
+        }
+        writeMessage("currentWord", game.blanks.join(" ")); //outputs the guessed word with blanks
     },
 
     checkLose: function(){ //method to see if the user has lost the game
