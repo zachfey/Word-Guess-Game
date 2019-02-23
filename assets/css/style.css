@@ -54,6 +54,14 @@ p{
     font-family: 'Josefin Sans', sans-serif;
 }
 
+#audio-container{
+    text-align: center;
+}
+
+#background-music{
+    display: inline-block;
+}
+
 @font-face {
     font-family: circuitFont;
     src: url(../fonts/101!\ Circuit\ Board.ttf);

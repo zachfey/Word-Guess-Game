@@ -11,6 +11,18 @@ function writeMessage(id, msg){ //handy function to write messages to html block
     userPrompt.innerHTML = msg;
 }
 
+// function selectWater(){
+//     if (window.matchMedia("(max-width: 640px)").matches){ //small
+//         return "waterTopSmall.png"
+//     } else if (window.matchMedia("(max-width: 768px)").matches){ //med
+//         return "waterTopMed.png"
+//     } else if (window.matchMedia("(max-width: 990px)").matches){ //large
+//         return "waterTopLarge.png"
+//     } else{ //XL
+//         return "waterTopSmall.png"
+//     }
+// }
+
 game = { //define the game object
     currentWord: "",
     guessedLetters: [],
@@ -61,8 +73,10 @@ game = { //define the game object
     },
 
     wrongLetter: function(char){
+        document.getElementById('waterPour').play();
         game.guessedLetters.push(char); //add the guessed letter to the array of guessed letters
-        document.getElementById("water" + (game.maxGuesses - game.numberGuesses)).style.backgroundImage = "url('assets/images/waterTop.png')"; //TODO Javascript media query
+
+        document.getElementById("water" + (game.maxGuesses - game.numberGuesses)).style.backgroundImage = "url('assets/images/waterTop.png')"; //TODO Javascript media query 
         if(game.numberGuesses !== 0){
             document.getElementById("water" + (game.maxGuesses - game.numberGuesses + 1)).style.background = "#00ccff";
         } 
@@ -72,6 +86,7 @@ game = { //define the game object
     },
 
     correctLetter: function(char){
+        document.getElementById('correct').play();
         for(i = 0; i < game.currentWord.length; i++){ //loop through the word to find at which index(indices) the letter occurs
             if(game.currentWord[i] === char){ 
                 game.blanks[i] = char; //replace the underscore with the correct letter
@@ -85,6 +100,7 @@ game = { //define the game object
             writeMessage("prompt", "You Lose! Press 'Enter' to try again!");
             writeMessage("currentWord", game.currentWord);
             game.gameOver = true;
+            document.getElementById('shortCircuit').play();
         }
     },
 
@@ -98,13 +114,12 @@ game = { //define the game object
     }
 }
 
-
 game.initialize(); //initialize the game
 
 document.onkeyup = function(event){ //when the user presses a key
+    document.getElementById('background-music').play();
     keyPress = event.key //save the keypress
     console.log("Key pressed: " + keyPress);
-    
     if(!game.gameOver){ //if the game is not over
         game.checkLetter(keyPress); 
         game.checkLose();
